@@ -1,0 +1,82 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Direct Supply People Test</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+
+    <link rel="stylesheet href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap""> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="dist/style.css">
+
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="container">
+            <h1>{{ message }}</h1>
+            <section v-if="apiErrored">
+                <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+            </section>
+
+            <section v-else>
+
+                <div v-if="apiLoading">
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                    Loading
+                </div>
+                
+                <div class="ds-persons" v-else>
+                    <div class="ds-filter-bar">
+                        <div class="ds-filter-bar--sort">
+                            <button :class="{'active' : sortId == 'first_name', 'asc' : sortOrder == false && sortId == 'first_name'}" v-on:click="toggleSort('first_name')">First Name</button>
+                            <button :class="{'active' : sortId == 'last_name', 'asc' : sortOrder == false && sortId == 'last_name'}" v-on:click="toggleSort('last_name')">Last Name</button>
+                        </div>
+                        <div class="ds-filter-bar--base">
+                            <!--<button class="reset" v-on:click="setSort('')">Reset Order</button>-->
+                            <button class="view" :class="{'grid' : isGrid == true}" v-on:click="setView()">{{ btnViewText }}</button>
+                        </div>
+                    </div>
+                    <div v-if="isGrid" class="ds-test-grid">
+                        <div class="ds-person" v-for="(person, index) in sortedPersons">
+                            <img :src="person.avatar" alt="" />
+                            <div class="ds-person-body">
+                                <h3>{{ person.first_name }} {{ person.last_name }}</h3>
+                                <p>{{ person.job_role }}</p>
+                                <a class="email" :href="'mailto:' + person.email">{{ person.email }}</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table v-if="!isGrid">
+                        <tr>
+                            <th class="sortable" :class="{'active' : sortId == 'first_name', 'asc' : sortOrder == false && sortId == 'first_name'}" v-on:click="toggleSort('first_name')">First Name</th>
+                            <th class="sortable" :class="{'active' : sortId == 'last_name', 'asc' : sortOrder == false && sortId == 'last_name'}" v-on:click="toggleSort('last_name')">Last Name</th>
+                            <th>Job Role</th>
+                            <th>Email</th>
+                        </tr>
+                        <tr v-for="(person, index) in sortedPersons">
+                            <td>{{ person.first_name }} </td>
+                            <td>{{ person.last_name }} </td>
+                            <td>{{ person.job_role }} </td>
+                            <td><a :href="'mailto:' + person.email">{{ person.email }}</a></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

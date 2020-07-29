@@ -1,0 +1,56 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Libre Baskerville', serif;
+}
+
+h1 {
+    font-size: 1.5rem; 
+    line-height: 1.35; 
+    margin: 1.5em 0 0.75em 0;
+
+    @media screen and (min-width: 992px) {
+        font-size: 2rem; 
+        line-height: 1.5;
+        margin: 1.35em 0 0.675em 0;
+    }
+}
+
+h2 {
+    font-size: 1.25rem; 
+    line-height: 1.15; 
+    margin: 1.846em 0 0.923em 0;
+
+    @media screen and (min-width: 992px) {
+        font-size: 1.5rem; 
+        line-height: 1.125; 
+        margin: 1.6875em 0 0.8435em 0;
+    }
+}
+
+h3 {
+    font-size: 1.075rem; 
+    line-height: 1.090909; 
+    margin: 2.1821em 0 1.090909em 0;
+    
+    @media screen and (min-width: 992px) {
+        font-size: 1.25rem; 
+        line-height: 1.1665; 
+        margin: 2.25em 0 1.125em 0;
+    }
+}
+
+p {
+    font-size: 1rem;  
+    line-height: 1.5; 
+    margin: 1.5em 0;
+}
+
+.email {
+    font-size: 0.75rem;
+}

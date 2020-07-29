@@ -1,0 +1,31 @@
+.ds-person {
+
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    border-top: 3px solid #038fd8;
+
+    h3 {
+        font-size: 1.125rem;
+        margin: 0 0 0.5rem 0;
+    }
+
+    p {
+        font-size: 0.875rem;
+        margin: 0 0 3rem 0;
+    }
+
+    .ds-person-body {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        padding: 40px 30px 30px;
+
+        p {
+            flex-grow: 1;
+        }
+    }
+}
