@@ -50,9 +50,10 @@
                             <button class="view" :class="{'grid' : isGrid == true}" v-on:click="setView()">{{ btnViewText }}</button>
                         </div>
                     </div>
-                    <div v-if="isGrid" class="ds-test-grid">
 
-                        <p v-if="!sortedPersons.length">Sorry, no results.</p>
+                    <p v-if="!sortedPersons.length">Sorry, no results.</p>
+                    
+                    <div v-if="isGrid" class="ds-test-grid">
 
                         <div class="ds-person" v-for="(person, index) in sortedPersons">
                             <img :src="person.avatar" alt="" />

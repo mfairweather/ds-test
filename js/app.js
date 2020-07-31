@@ -74,12 +74,12 @@ var app = new Vue({
 
             // Search people
             var persons = this.persons.filter(person => {
-                return person.first_name.toLowerCase().includes(this.sortText.toLowerCase()) ||
+                return  person.first_name.toLowerCase().includes(this.sortText.toLowerCase()) ||
                         person.last_name.toLowerCase().includes(this.sortText.toLowerCase()) ||
                         person.job_role.toLowerCase().includes(this.sortText.toLowerCase())
             })
             
-            //Pass sortId for toggle and text filter
+            //Pass sortId for toggle and persons for filter
             if(this.sortId == 'first_name') {
                 return _.orderBy(persons, 'first_name', this.sortOrder ? 'desc' : 'asc');
             } else {
