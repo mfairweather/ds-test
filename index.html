@@ -37,12 +37,14 @@
                 
                 <div class="ds-persons" v-else>
                     <div class="ds-filter-bar">
+                        <div class="ds-filter-bar--search">
+                            <div class="search">
+                                <input type="text"  v-model="sortText" placeholder="Search by name or job role" />
+                            </div>
+                        </div>
                         <div class="ds-filter-bar--sort">
                             <button :class="{'active' : sortId == 'first_name', 'asc' : sortOrder == false && sortId == 'first_name'}" v-on:click="toggleSort('first_name')">First Name</button>
                             <button :class="{'active' : sortId == 'last_name', 'asc' : sortOrder == false && sortId == 'last_name'}" v-on:click="toggleSort('last_name')">Last Name</button>
-                        </div>
-                        <div class="ds-filter-bar--search">
-                            <input type="text"  v-model="sortText" placeholder="Search by name or job role" />
                         </div>
                         <div class="ds-filter-bar--base">
                             <button class="view" :class="{'grid' : isGrid == true}" v-on:click="setView()">{{ btnViewText }}</button>
