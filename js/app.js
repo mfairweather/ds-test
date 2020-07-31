@@ -41,7 +41,7 @@ var app = new Vue({
         btnViewText: "List View",
 
         //empty array for api
-        persons: []
+        persons: [],
     },
 
     mounted () {
@@ -57,7 +57,7 @@ var app = new Vue({
 
             // catch errors
             .catch(error => {
-                console.log(error)
+                console.log(error)  
                 this.apiErrored = true
             })
 
@@ -68,7 +68,8 @@ var app = new Vue({
     computed: {
 
         //return an array sorted by last_name on load
-        sortedPersons: function() {    
+        sortedPersons: function() { 
+
             switch(this.sortId) {
                 case 'first_name':
                     return _.orderBy(this.persons, 'first_name', this.sortOrder ? 'desc' : 'asc');
@@ -79,8 +80,7 @@ var app = new Vue({
                 default:
                     return this.persons;
             }
-
-        },
+        }
     },
 
     methods: {
@@ -120,6 +120,5 @@ var app = new Vue({
             }
             
         }
-
     }
 })

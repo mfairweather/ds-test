@@ -42,7 +42,6 @@
                             <button :class="{'active' : sortId == 'last_name', 'asc' : sortOrder == false && sortId == 'last_name'}" v-on:click="toggleSort('last_name')">Last Name</button>
                         </div>
                         <div class="ds-filter-bar--base">
-                            <!--<button class="reset" v-on:click="setSort('')">Reset Order</button>-->
                             <button class="view" :class="{'grid' : isGrid == true}" v-on:click="setView()">{{ btnViewText }}</button>
                         </div>
                     </div>
@@ -57,20 +56,22 @@
                         </div>
                     </div>
 
-                    <table v-if="!isGrid">
-                        <tr>
-                            <th class="sortable" :class="{'active' : sortId == 'first_name', 'asc' : sortOrder == false && sortId == 'first_name'}" v-on:click="toggleSort('first_name')">First Name</th>
-                            <th class="sortable" :class="{'active' : sortId == 'last_name', 'asc' : sortOrder == false && sortId == 'last_name'}" v-on:click="toggleSort('last_name')">Last Name</th>
-                            <th>Job Role</th>
-                            <th>Email</th>
-                        </tr>
-                        <tr v-for="(person, index) in sortedPersons">
-                            <td>{{ person.first_name }} </td>
-                            <td>{{ person.last_name }} </td>
-                            <td>{{ person.job_role }} </td>
-                            <td><a :href="'mailto:' + person.email">{{ person.email }}</a></td>
-                        </tr>
-                    </table>
+                    <div v-if="!isGrid" class="ds-test-table">
+                        <table>
+                            <tr>
+                                <th class="sortable" :class="{'active' : sortId == 'first_name', 'asc' : sortOrder == false && sortId == 'first_name'}" v-on:click="toggleSort('first_name')">First Name</th>
+                                <th class="sortable" :class="{'active' : sortId == 'last_name', 'asc' : sortOrder == false && sortId == 'last_name'}" v-on:click="toggleSort('last_name')">Last Name</th>
+                                <th>Job Role</th>
+                                <th>Email</th>
+                            </tr>
+                            <tr v-for="(person, index) in sortedPersons">
+                                <td>{{ person.first_name }} </td>
+                                <td>{{ person.last_name }} </td>
+                                <td>{{ person.job_role }} </td>
+                                <td><a :href="'mailto:' + person.email">{{ person.email }}</a></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
 
             </section>
