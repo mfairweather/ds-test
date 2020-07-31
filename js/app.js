@@ -42,6 +42,8 @@ var app = new Vue({
 
         //empty array for api
         persons: [],
+
+        sortText: ''
     },
 
     mounted () {
@@ -68,17 +70,20 @@ var app = new Vue({
     computed: {
 
         //return an array sorted by last_name on load
-        sortedPersons: function() { 
+        sortedPersons: function() {
 
-            switch(this.sortId) {
-                case 'first_name':
-                    return _.orderBy(this.persons, 'first_name', this.sortOrder ? 'desc' : 'asc');
-
-                case 'last_name':
-                    return _.orderBy(this.persons, 'last_name', this.sortOrder ? 'desc' : 'asc');
-
-                default:
-                    return this.persons;
+            // Search people
+            var persons = this.persons.filter(person => {
+                return person.first_name.toLowerCase().includes(this.sortText.toLowerCase()) ||
+                        person.last_name.toLowerCase().includes(this.sortText.toLowerCase()) ||
+                        person.job_role.toLowerCase().includes(this.sortText.toLowerCase())
+            })
+            
+            //Pass sortId for toggle and text filter
+            if(this.sortId == 'first_name') {
+                return _.orderBy(persons, 'first_name', this.sortOrder ? 'desc' : 'asc');
+            } else {
+                return _.orderBy(persons, 'last_name', this.sortOrder ? 'desc' : 'asc');
             }
         }
     },
