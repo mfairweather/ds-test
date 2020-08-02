@@ -2,48 +2,33 @@ var app = new Vue({
     
     el: '#app',
 
-    props: {
-
-        // is the api loading
-        apiLoading: {
-            type: Boolean,
-            default: true
-        },
-
-        // did the api error
-        apiErrored: {
-            type: Boolean,
-            default: false
-        },
-
-        // set how we want it sorted on load
-        sortId: {
-            type: String,
-            default: 'last_name'
-        },
-
-        // boolean for ascending or descending sort order
-        sortOrder: {
-            type: Boolean,
-            default: false
-        },
-
-        // check if grid view
-        isGrid: {
-            type: Boolean,
-            default: true
-        }
-    },
-    
     data: {
         //h1 content
         message: 'Direct Supply People from API',
+
+        // Toggle grid/list text default
         btnViewText: "List View",
 
         //empty array for api
         persons: [],
 
-        sortText: ''
+        //sort peeps by last name before displayed
+        sortId: 'last_name',
+
+        //boolean to set sort order toggle
+        sortOrder: false,
+        
+        //search text
+        sortText: '',
+
+        //set default display to grid view
+        isGrid: true,
+
+        //boolean check if api is loading
+        apiLoading: true,
+
+        //boolean check if api errors
+        apiErrored: false
     },
 
     mounted () {
